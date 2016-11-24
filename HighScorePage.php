@@ -9,10 +9,11 @@
 
 
  <div class= "text-center">
-<p>
+<div class ="jumbotron">
+  <p>
    <h1>High Score Users</h1>
 </p>
-
+</div>
 <br>
 <table class = "table text-center">
 
@@ -25,7 +26,7 @@ require("dbutil.php");
 
 
 
-  $query="SELECT * FROM `userscore` order by score DESC ";
+  $query="SELECT * FROM `userscore` order by score DESC LIMIT 10";
   $result = $db -> prepare($query);
   $result -> execute();
 

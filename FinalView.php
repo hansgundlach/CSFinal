@@ -1,4 +1,4 @@
-yu<html>
+<html>
 
 
 <?php
@@ -128,8 +128,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
 else
 {
 ?>
-	<p>Oops! You shouldn't be viewing this page via GET request. Start from <a href="enterName.php">the enterName page</a> instead.</p>
-  <p id="intro"> Hello, <?= $_SESSION['examplePage_name'] ?>! Your name has been saved to a session variable, which will be convenient later. Now, Let's have some fun with AJAX. I'm going to generate the text below by accessing data from another PHP page entirely, but without reloading the page! Go ahead, click a button.</p>
+
+  <p id="intro"> Hello, <?= $_SESSION['examplePage_name'] ?></p>
   <!-- Below, we use the onclick event to run a Javascript function (defined above) when you click on a button! This is similar to AppLab's onEvent functionality.. -->
     You score
   <p id = "score"> Your score is <?= $_SESSION['score'] ?> </p>
@@ -142,8 +142,8 @@ else
 <?php
 }
 ?>
-
+<h2>
 <a href= "HighScorePage.php">High Score Page</a>
-
+</h2>
 <script src= "Final.js" type = "text/javascript"></script>
 </html>
