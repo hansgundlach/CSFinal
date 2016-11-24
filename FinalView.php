@@ -25,7 +25,7 @@ session_start();
 
 <div class = "text-center">
 <div class = "jumbotron">
-<h1 id ="Main24">24</h1>
+<h1 class ="Main24">24</h1>
 </div>
 <p>
   <h2>
