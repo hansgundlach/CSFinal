@@ -1,5 +1,14 @@
 <!DOCTYPE HTML>
+
+
 <html>
+<?php
+// Start my session at the very beginning of the page
+// I only need to do this because I may be using the $_SESSION variable
+session_start();
+$_SESSION['score'] =  0 ;
+
+?>
 <head>
 	<title>Example Page</title>
 	<link rel="stylesheet" type="text/css" href="style.css">

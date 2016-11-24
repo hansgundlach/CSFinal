@@ -1,10 +1,7 @@
 <?php
 
-
-
-
 require("config.php");
-
+session_start();
   //database exception handaling
   try {
     //connect to database  based on config.php parameters and create new PDO object
@@ -46,11 +43,15 @@ require("config.php");
 $q = $_REQUEST["q"];
 
 $hint = "blob ";
-
+//please change session variable
+//value is changing just not visible
+//$_SESSION['score'] =  $_SESSION['score']+1;
 
 echo implode(" ",$row);
+//echo $_SESSION['score'];
 
 
+//change score if answer is succesful and add to database if it is
 
 
 

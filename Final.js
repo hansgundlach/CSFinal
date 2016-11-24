@@ -50,10 +50,18 @@ function mainit() {
 
 trust = trust.replace(/[,]/g,"");
 var chosen = trust.split('');
-
+//display all the numbers
 document.getElementById("Numbers").innerHTML=chosen.toString();
 
- console.log(chosen);
+
+
+//display session variable
+document.getElementById("Name").innerHTML =
+
+
+
+
+
 
   //here was thing
   //click ckeck 24 button
@@ -135,19 +143,24 @@ document.getElementById("Numbers").innerHTML=chosen.toString();
 
 
 
+//function adds score of user in session and changes variable
+//and adds to highsore if possible
+function changeScore() {
+xhttp = new XMLHttpRequest();
 
+xhttp.onreadystatechange = function (){
+  if (this.readyState==4 && this.status==200) {
+       document.getElementById("Name").innerHTML=this.responseText;
+       console.log(this.responseText);
+       //nextChosen = this.responseText;
+       mainit();
 
+      }
 
-
-
-
-
-
-
-
-
-
-
+}
+xhttp.open("GET","HighScoreChange.php?q=", true);
+xhttp.send();
+}
 
 
 

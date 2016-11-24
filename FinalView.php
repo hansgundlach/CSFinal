@@ -1,4 +1,4 @@
-<html>
+yu<html>
 
 
 <?php
@@ -70,6 +70,22 @@ For Example : 2*6 + 2*6 Works
 
 </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST')
 {
@@ -80,11 +96,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
 		// will have access to this variable until the user
 		// closes the browser
 		$_SESSION['examplePage_name'] = $_POST['name'];
+    //I'm setting another php variable
+
+
 	}
 ?>
 	<p id="intro"> Hello, <?= $_SESSION['examplePage_name'] ?>! Your name has been saved to a session variable, which will be convenient later. Now, Let's have some fun with AJAX. I'm going to generate the text below by accessing data from another PHP page entirely, but without reloading the page! Go ahead, click a button.</p>
 	<!-- Below, we use the onclick event to run a Javascript function (defined above) when you click on a button! This is similar to AppLab's onEvent functionality.. -->
+  <p id = "score"> Your score is <?= $_SESSION['score'] ?> </p>
 
+  </p>
 <?php
 }
 else
