@@ -1,0 +1,35 @@
+
+input[type=text]:focus {
+  border: 3px solid #555;
+
+}
+input[type=text] {
+    width: 50%;
+    height: 10%;
+    font-size: 40px;
+
+}
+
+p
+{
+font-family : "GT Walsheim", "Open Sans";
+font-weight: 700;
+font-size: 25px;
+}
+#Main24
+{
+font-size: 100px !important;
+font-family: "Lobster",serif !important ;
+transform: scale(2,2);
+color: black;
+}
+
+#check {
+height:10%;
+}
+
+.jumbotron {
+background-color: rgb(0, 204, 255) !important;
+opacity: 0.9!important;
+
+}
