@@ -8,9 +8,10 @@ $(document).ready(function(){
 
   $("#next").click(function() {
   //console.log("next pressed");
-
+  //viewarray retrieved
   retrieveData();
-
+  //update score
+  changeScore();
 
 
   });
@@ -56,7 +57,7 @@ document.getElementById("Numbers").innerHTML=chosen.toString();
 
 
 //display session variable
-document.getElementById("Name").innerHTML =
+document.getElementById("score").innerHTML =  changeScore();
 
 
 
@@ -150,16 +151,17 @@ xhttp = new XMLHttpRequest();
 
 xhttp.onreadystatechange = function (){
   if (this.readyState==4 && this.status==200) {
-       document.getElementById("Name").innerHTML=this.responseText;
+       document.getElementById("score").innerHTML=this.responseText;
        console.log(this.responseText);
        //nextChosen = this.responseText;
-       mainit();
+       //mainit();
 
       }
 
 }
-xhttp.open("GET","HighScoreChange.php?q=", true);
+xhttp.open("GET","scoreChange.php?q=", true);
 xhttp.send();
+return this.responseText;
 }
 
 
