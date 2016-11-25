@@ -50,7 +50,7 @@ else
 
 <div class = "jumbotron">
 <h2> Hello, <?= $_SESSION['examplePage_name'] ?></h2>
-<h2 id = "score"> Your score is <?= $_SESSION['score'] ?> </h2>
+ <h2 id = "score">You're score is  <?= $_SESSION['score'] ?> </h2>
 <div class="text-center">
 <h1 class ="Main24">24</h1>
 </div>
@@ -63,18 +63,18 @@ else
 </p>
 
 <!--<form action= "evaluate.php">-->
-<nav>
 
 
-<ul>
 
-<li>
 
-<input type= "text" id="24Expres" ></li>
-<li>
-<button type = "button" id= "check" class = "btn btn-primary btn-lg"> Check Answer </button></li>
-</ul>
-</nav>
+
+
+
+<input type= "text" id="24Expres" >
+
+<button type = "button" id= "check" class = "btn btn-primary btn-lg"> Check Answer </button>
+
+
 <p>
    Result : <span id = "Result"> </span>
 </p>

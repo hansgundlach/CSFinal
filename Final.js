@@ -1,6 +1,7 @@
+//trust contains list of 4 numbers
 var trust;
-
-
+//score is user score
+var score;
 
 $(document).ready(function(){
 
@@ -11,7 +12,7 @@ $(document).ready(function(){
   //viewarray retrieved
   retrieveData();
   //update score
-  changeScore();
+  //changeScore();
 
 
   });
@@ -23,8 +24,9 @@ $(document).ready(function(){
 
   var nextChosen = "5";
   retrieveData();
+  //changeScore();
 
-
+  //changeScore();
   console.log(nextChosen + "this is nextChosen");
 
 //display numbers selected for 24
@@ -56,8 +58,8 @@ document.getElementById("Numbers").innerHTML=chosen.toString();
 
 
 
-//display session variable
-document.getElementById("score").innerHTML =  changeScore();
+//display session score variable
+//document.getElementById("score").innerHTML = score.toString();
 
 
 
@@ -106,6 +108,16 @@ document.getElementById("score").innerHTML =  changeScore();
               console.log(eval(val)+ "Hello");
                   if(eval(val)===24){
                      $("#Result").text("Congratulations ! You GOT THE 24");
+                      changeScore();
+
+
+
+
+
+
+
+
+
                   }else {
                      $("#Result").text("Look at this again, Your Answer Evaluated To " + eval(val));
                   }
@@ -151,9 +163,10 @@ xhttp = new XMLHttpRequest();
 
 xhttp.onreadystatechange = function (){
   if (this.readyState==4 && this.status==200) {
-       document.getElementById("score").innerHTML=this.responseText;
+       document.getElementById("score").innerHTML= "Youre score is " + this.responseText;
        console.log(this.responseText);
        //nextChosen = this.responseText;
+       score = this.responseText;
        //mainit();
 
       }
@@ -161,7 +174,7 @@ xhttp.onreadystatechange = function (){
 }
 xhttp.open("GET","scoreChange.php?q=", true);
 xhttp.send();
-return this.responseText;
+//return this.responseText;
 }
 
 

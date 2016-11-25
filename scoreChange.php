@@ -5,9 +5,10 @@ session_start();
 
 
 //change session score
-$_SESSION['score'] =  $_SESSION['score'] +1 ;
+$_SESSION['score'] =  $_SESSION['score'] +1;
 
-
+$pageScore = $_SESSION['score'];
+$pageUser = $_SESSION['examplePage_name'];
 //retrieve the 1oth highest score and compare
 $query = "SELECT score FROM `userscore` order by score LIMIT 1 OFFSET 3";
 //SELECT score FROM `userscore` order by score LIMIT 1 OFFSET 3
@@ -27,7 +28,10 @@ $check -> execute();
 //$checkResult = $check -> fetch(PDO::FETCH_ASSOC);
 if($check ->rowCount() > 0 ){
 $checkResult = $check -> fetch(PDO::FETCH_ASSOC);
-//$match = mysql_num_rows($checkResult);
+//change user entry if user score if user is already in highscore
+$update = " UPDATE userscore SET score ='$pageScore' WHERE user = '$pageUser'";
+$update =  $db ->prepare($update);
+$update -> execute();
 }
 else{
 
@@ -41,6 +45,8 @@ $result -> execute();
 
 
 //if user is already added replace user score with new score
+//do I really need this parameters
+$q = $_REQUEST["q"];
 
 
 
