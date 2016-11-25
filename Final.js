@@ -66,8 +66,7 @@ document.getElementById("Numbers").innerHTML=chosen.toString();
 
 
 
-  //here was thing
-  //click ckeck 24 button
+
       $("#check").unbind('click').bind('click',function(){
         //var val = "";
         //most of input processing
@@ -116,11 +115,11 @@ document.getElementById("Numbers").innerHTML=chosen.toString();
                       changeScore();
                       val = "" ;
 
-                      //retrieveData();
+                      retrieveData();
                       console.log("This should end console");
                       return;
 
-                        retrieveData();
+
 
 
 
