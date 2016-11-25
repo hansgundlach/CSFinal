@@ -49,8 +49,8 @@ else
 
 
 <div class = "jumbotron">
-<p id="intro"> Hello, <?= $_SESSION['examplePage_name'] ?></p>
-<p id = "score"> Your score is <?= $_SESSION['score'] ?> </p>
+<h2> Hello, <?= $_SESSION['examplePage_name'] ?></h2>
+<h2 id = "score"> Your score is <?= $_SESSION['score'] ?> </h2>
 <div class="text-center">
 <h1 class ="Main24">24</h1>
 </div>
@@ -59,7 +59,6 @@ else
 <p>
   <h2>
    Your Four Numbers Are : <span id= "Numbers"> </span>
-   Your name is : <span id= "Name"></span>
  </h2>
 </p>
 
@@ -97,19 +96,17 @@ For Example : 2*6 + 2*6 Works
 
 </div>
 
-</div>
 
 
-
-  <p id="intro"> Hello, <?= $_SESSION['examplePage_name'] ?></p>
-  <!-- Below, we use the onclick event to run a Javascript function (defined above) when you click on a button! This is similar to AppLab's onEvent functionality.. -->
-    You score
-  <p id = "score"> Your score is <?= $_SESSION['score'] ?> </p>
 
 
 
 <h2>
 <a href= "HighScorePage.php">High Score Page</a>
 </h2>
+</div>
+
+
+
 <script src= "Final.js" type = "text/javascript"></script>
 </html>
