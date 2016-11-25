@@ -21,53 +21,29 @@
 
 require("config.php");
 require("dbutil.php");
-
-
-
-
-
+//$query selects top ten user by score
   $query="SELECT * FROM `userscore` order by score DESC LIMIT 10";
   $result = $db -> prepare($query);
   $result -> execute();
 
-
-    //loops through each "row" of database fetched via fetx
-
-
-
-//  echo "<table class= 'center'>";
-
+//while loops goes through every row in high score user database
+//and displays table rows produced by $query
   while ($row = $result->fetch(PDO::FETCH_ASSOC))
   {
-    //$lastdet is the determinant of a past matrix submitted to the  database
-    //$lasttrace is the trace of a past matrix submitted to the database
   echo "<tr>";
-  //echo "<br>";
-  $lastdet = $row['user'];
-  $lasttrace = $row['score'];
-  //echo "$lastdet         $lasttrace";
-  echo "<td class = 'text-center'> $lastdet </td>";
-  echo "<td class = 'text-center'>  $lasttrace </td>";
+  $user = $row['user'];
+  $score = $row['score'];
+  echo "<td class = 'text-center'> $user </td>";
+  echo "<td class = 'text-center'>  $score </td>";
   echo "</tr>\n";
   }
-
-//echo "</table>";
-
 
 ?>
 
 </table>
 <br>
 
-<h1><a href= "FinalView.php">Get Back to Playing</a></h1>
+<h1><a href= "FinalView.php">Go Back to Playing</a></h1>
 </div>
-
-
-
-
-
-
-
-
 
 </html>

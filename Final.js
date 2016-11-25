@@ -1,212 +1,131 @@
 //trust contains list of 4 numbers
 var trust;
-//score is user score
+//score is user score for game
 var score;
 
-$(document).ready(function(){
+$(document).ready(function() {
+
+    //when user presses the button with id "next" a new set of four numbers
+    //is fetched from the database and shownn on screen
+    $("#next").click(function() {
+        retrieveData();
+    });
 
 
-
-  $("#next").click(function() {
-  //console.log("next pressed");
-  //viewarray retrieved
-  retrieveData();
-  //update score
-  //changeScore();
-
-
-  });
-
-
-
-
-
-
-  var nextChosen = "5";
-  retrieveData();
-  //changeScore();
-
-  //changeScore();
-  console.log(nextChosen + "this is nextChosen");
-
-//display numbers selected for 24
- //$('#Numbers').text(chosen.toString());
-
-
-
-
-
-
-
+    retrieveData();
 
 });
 
 
-
+//mainit validates user input and declares if result forms 24
 function mainit() {
 
 
 
+    //displays all 4 numbers on screen in html element with id Numbers
+    document.getElementById("Numbers").innerHTML = trust.toString();
 
 
-//this code is so that commas are able to be added to the database
+    $("#check").unbind('click').bind('click', function() {
 
-trust = trust.replace(/[,]/g,"");
-var chosen = trust.split('');
-//display all the numbers
-document.getElementById("Numbers").innerHTML=chosen.toString();
-
-
-
-//display session score variable
-//document.getElementById("score").innerHTML = score.toString();
-
-
-
-
-
-
-
-      $("#check").unbind('click').bind('click',function(){
-        //var val = "";
-        //most of input processing
         var val = $('#24Expres').val();
-        console.log(val);
-        console.log("what");
-        //val = eval(val);
 
-
-        //checking that expression matches all requirements
-
-
-
-        //removing everything except digits
-        var checker =  val.replace(/[^0-9]/g, "" );
+        //checker is a string where everything but digits are replaced
+        var checker = val.replace(/[^0-9]/g, "");
 
         //if checker length is bigger htne 4 something is wrong
-        var regex = new RegExp("[" + chosen.toString()+ "]" +  "{4}");
+        var regex = new RegExp("[" + trust.toString() + "]" + "{4}");
         //regex chekcs if input maches all 4 characters
         var rules = regex.test(checker);
         console.log(rules);
 
-        //replaces all alloed expressions if there is stuff remaining string is invalid
-        var nums = val.replace(/[\d\(\)\+\-\*\/\. ]/g,'');
-        //test if there are any exponentials
+        //replaces all alloed expressions if nums is not empty user string
+        //contains not allowed characters
+        var nums = val.replace(/[\d\(\)\+\-\*\/\. ]/g, '');
+
+        //expoReg detects strings containg the exponential operator **
         expoReg = new RegExp("[*]{2}");
         var expo = expoReg.test(val);
 
-
-        if(nums !== ""  || expo){
-          $("#Result").text("please use only the characters allowed:");
-        }
-        else {
-          //check if user input contaisn alll 4 digits and only contaisn those digits
-            if(rules && (checker.length === 4))
+        if (nums !== "" || expo) {
+            $("#Result").text("please use only the characters allowed:");
+        } else {
+            //check if user input contaisn alll 4 digits and only contaisn those digits
+            //if checker length is not equal to 4 there are not 4 digits in thr users expression
+            if (rules && (checker.length === 4))
 
             {
-              console.log(eval(val)+ "Hello");
-                  if(eval(val)===24){
+                //if syatemntes evaluates whether the user input expression
+                //actually evaluates to 24
+                if (eval(val) === 24) {
 
-                     $("#Result").text("Congratulations ! You GOT THE 24");
-                     document.getElementById("24Expres").value= "";
-                     console.log(eval(val));
-                     console.log("Hans is consolign");
+                    $("#Result").text("Congratulations ! You GOT THE 24");
+                    document.getElementById("24Expres").value = "";
 
-                      changeScore();
-                      val = "" ;
+                    changeScore();
+                    val = "";
+                    retrieveData();
 
-                      retrieveData();
-                      console.log("This should end console");
-                      return;
+                    return;
 
+                } else {
+                    //user expression is syntactilcy correct and meets rules but does not
+                    //evaluate to 24
+                    $("#Result").text("Look at this again, Your Answer Evaluated To " + eval(val));
+                }
 
-
-
-
-
-
-
-                  }else {
-                     $("#Result").text("Look at this again, Your Answer Evaluated To " + eval(val));
-                  }
-
-
-
-
-
+            } else {
+                $("#Result").text("make sure you only use all and only the numbers above");
+                return;
 
             }
-  else {
-     $("#Result").text("make sure you only use all and only the numbers above");
-     return;
 
-  }
-
-
-
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-      });
+        }
+    });
 
 }
 
 
 
 
-//function adds score of user in session and changes variable
-//and adds to highsore if possible
+//changeScore sends ajax request which increments the user session variable score
 function changeScore() {
-xhttp = new XMLHttpRequest();
+    xhttp = new XMLHttpRequest();
 
-xhttp.onreadystatechange = function (){
-  if (this.readyState==4 && this.status==200) {
-       document.getElementById("score").innerHTML= "Youre score is " + this.responseText;
-       //console.log(this.responseText);
-       //nextChosen = this.responseText;
-       score = this.responseText;
-       //mainit();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("score").innerHTML = "Youre score is " + this.responseText;
 
-      }
+            score = this.responseText;
 
-}
-xhttp.open("GET","scoreChange.php?q=", true);
-xhttp.send();
-//return this.responseText;
-return;
+        }
+
+    }
+    xhttp.open("GET", "scoreChange.php?q=", true);
+    xhttp.send();
+
+
 }
 
 
 
 
-//functions retrieves data from server
+//retrieveData sends ajax request to server for
+//string of 4 numbers For Example "4,3,4,3"
 function retrieveData() {
-xhttp = new XMLHttpRequest();
+    xhttp = new XMLHttpRequest();
 
-xhttp.onreadystatechange = function (){
-  if (this.readyState==4 && this.status==200) {
-       //document.getElementById("Numbers").innerHTML=this.responseText;
-       console.log(this.responseText);
-       nextChosen = this.responseText;
-       trust = this.responseText;
-       mainit();
-    //   console.log(trust);
-      }
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
 
-}
-xhttp.open("GET","Final.php?q=", true);
-xhttp.send();
+            trust = this.responseText;
+            mainit();
+
+        }
+
+    }
+    xhttp.open("GET", "Final.php?q=", true);
+    xhttp.send();
 
 
 

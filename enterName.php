@@ -2,16 +2,13 @@
 
 
 <html>
-
-
-
 <?php
-// Start my session at the very beginning of the page
-// I only need to do this because I may be using the $_SESSION variable
+//start session and set the score of the user to 0 at the begining
 session_start();
 $_SESSION['score'] =  0 ;
 
 ?>
+
 <head>
 	<title>Example Page</title>
 	<!-- Latest compiled and minified CSS -->
@@ -21,7 +18,6 @@ $_SESSION['score'] =  0 ;
   <link rel="stylesheet" type="text/css" href="Final.css">
 
 </head>
-
 
 <body>
 
@@ -33,10 +29,10 @@ $_SESSION['score'] =  0 ;
 
 <form action="FinalView.php" method="POST">
 	<h2>Input name and press send to play 24</h2>
-	<div id="name-input">
+
 		<h2>Name:</h2>
 		<input type="text" name="name" required />
-	</div>
+
 	<input type="submit" class = "btn btn-primary btn-lg"/>
 </form>
 </div>
