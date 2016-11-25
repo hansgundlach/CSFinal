@@ -28,7 +28,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
 		// This means that any other PHP pages on this site
 		// will have access to this variable until the user
 		// closes the browser
-		$_SESSION['examplePage_name'] = $_POST['name'];
+    $cleanVar = htmlspecialchars($_POST['name']);
+		$_SESSION['examplePage_name'] = $cleanVar;
     //I'm setting another php variable
 
 
@@ -48,12 +49,14 @@ else
 ?>
 
 
-<div class = "jumbotron">
+
+<div class = "jumbotron container-fluid ">
 <h2> Hello, <?= $_SESSION['examplePage_name'] ?></h2>
  <h2 id = "score">You're score is  <?= $_SESSION['score'] ?> </h2>
 <div class="text-center">
 <h1 class ="Main24">24</h1>
 </div>
+
 </div>
 <div class = "text-center">
 <p>

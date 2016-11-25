@@ -68,9 +68,12 @@ document.getElementById("Numbers").innerHTML=chosen.toString();
 
   //here was thing
   //click ckeck 24 button
-      $("#check").click(function(){
+      $("#check").unbind('click').bind('click',function(){
+        //var val = "";
         //most of input processing
         var val = $('#24Expres').val();
+        console.log(val);
+        console.log("what");
         //val = eval(val);
 
 
@@ -85,19 +88,16 @@ document.getElementById("Numbers").innerHTML=chosen.toString();
         var regex = new RegExp("[" + chosen.toString()+ "]" +  "{4}");
         //regex chekcs if input maches all 4 characters
         var rules = regex.test(checker);
+        console.log(rules);
 
-
-
-
-
-
-
-
-
-         //replaces all alloed expressions if there is stuff remaining string is invalid
+        //replaces all alloed expressions if there is stuff remaining string is invalid
         var nums = val.replace(/[\d\(\)\+\-\*\/\. ]/g,'');
-        console.log(nums + "this hsould be empty");
-        if(nums !== ""){
+        //test if there are any exponentials
+        expoReg = new RegExp("[*]{2}");
+        var expo = expoReg.test(val);
+
+
+        if(nums !== ""  || expo){
           $("#Result").text("please use only the characters allowed:");
         }
         else {
@@ -107,11 +107,20 @@ document.getElementById("Numbers").innerHTML=chosen.toString();
             {
               console.log(eval(val)+ "Hello");
                   if(eval(val)===24){
+
                      $("#Result").text("Congratulations ! You GOT THE 24");
+                     document.getElementById("24Expres").value= "";
+                     console.log(eval(val));
+                     console.log("Hans is consolign");
+
                       changeScore();
+                      val = "" ;
 
+                      //retrieveData();
+                      console.log("This should end console");
+                      return;
 
-
+                        retrieveData();
 
 
 
@@ -130,6 +139,7 @@ document.getElementById("Numbers").innerHTML=chosen.toString();
             }
   else {
      $("#Result").text("make sure you only use all and only the numbers above");
+     return;
 
   }
 
@@ -164,7 +174,7 @@ xhttp = new XMLHttpRequest();
 xhttp.onreadystatechange = function (){
   if (this.readyState==4 && this.status==200) {
        document.getElementById("score").innerHTML= "Youre score is " + this.responseText;
-       console.log(this.responseText);
+       //console.log(this.responseText);
        //nextChosen = this.responseText;
        score = this.responseText;
        //mainit();
@@ -175,6 +185,7 @@ xhttp.onreadystatechange = function (){
 xhttp.open("GET","scoreChange.php?q=", true);
 xhttp.send();
 //return this.responseText;
+return;
 }
 
 
