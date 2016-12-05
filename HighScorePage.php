@@ -5,6 +5,7 @@
   <!-- added font family for 24 logo -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
   <link rel="stylesheet" type="text/css" href="Final.css">
+  <!--<script src= "Final.js" type = "text/javascript"></script>-->
 </head>
 
 
@@ -44,6 +45,10 @@ require("dbutil.php");
 <br>
 
 <h1><a href= "FinalView.php">Go Back to Playing</a></h1>
+
+
+
+
 </div>
 
 </html>

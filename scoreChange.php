@@ -30,18 +30,50 @@ $userCheck = "SELECT * FROM userscore WHERE user = '$pageUser'";
 $check = $db -> prepare($userCheck);
 $check -> execute();
 //$checkResult = $check -> fetch(PDO::FETCH_ASSOC);
+//check if user is already in database
 if($check ->rowCount() > 0){
 $checkResult = $check -> fetch(PDO::FETCH_ASSOC);
 //change user entry if user score if user is already in highscore
 $update = " UPDATE userscore SET score ='$pageScore' WHERE user = '$pageUser'";
 $update =  $db ->prepare($update);
 $update -> execute();
+
+
 }
 else{
+//delete user at bottom of database
+$query = "DELETE FROM userscore ORDER BY score LIMIT 1";
+$result = $db -> prepare($query);
+$result -> execute();
+
 //insert new  username and score into database if user is not already there
 $query = "INSERT INTO `24s`.`userscore` (`user`, `score`) VALUES ('$pageUser','$pageScore')";
 $result = $db -> prepare($query);
 $result -> execute();
+
+
+//two possible ways just replace high scorer (now)
+
+//don't allow repete user names
+
+// generate random id and see if it matches up then add
+
+// check if score is greater then score for that username previously
+
+//ask Dr.Bricker what is best
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 }
 

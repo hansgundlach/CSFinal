@@ -7,41 +7,29 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <!-- added font family for 24 logo -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
+<!-- connect to js file with jquery/ajax request to interact with user input -->
+<script src= "Final.js" type = "text/javascript"></script>
 
 </head>
 
-
 <?php
-// Start my session at the very beginning of the page
-// I only need to do this because I may be using the $_SESSION variable
 session_start();
+
+require("dbutil.php");
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    //if statement checks if the users's name is already set
+    if (isset($_POST['name'])) {
+        //htmlspecialchars deals with  any character the user may have entered that
+        //could mess with the html
+        $cleanVar             = htmlspecialchars($_POST['name']);
+        $_SESSION['userName'] = $cleanVar;
+
+    }
 ?>
 
-
-
 <?php
-if ($_SERVER['REQUEST_METHOD'] === 'POST')
-{
-	if (isset($_POST['name']))
-	{
-		// Now the session variable "name" is set.
-		// This means that any other PHP pages on this site
-		// will have access to this variable until the user
-		// closes the browser
-    $cleanVar = htmlspecialchars($_POST['name']);
-		$_SESSION['userName'] = $cleanVar;
-    //I'm setting another php variable
-
-
-	}
-?>
-
-
-  </p>
-<?php
-}
-else
-{
+} else {
 ?>
 
 <?php
@@ -54,23 +42,17 @@ else
 <h2> Hello, <?= $_SESSION['userName'] ?></h2>
  <h2 id = "score">You're score is  <?= $_SESSION['score'] ?> </h2>
 <div class="text-center">
-<h1 class ="Main24">24</h1>
+  <h1 class ="Main24">24</h1>
+
 </div>
 
 </div>
 <div class = "text-center">
 <p>
   <h2>
-   Your Four Numbers Are : <span id= "Numbers"> </span>
+   Your Four Numbers Are : <span id= "Numbers"> <?= $_SESSION['numList'] ?> </span>
  </h2>
 </p>
-
-<!--<form action= "evaluate.php">-->
-
-
-
-
-
 
 
 <input type= "text" id="24Expres" >
@@ -109,7 +91,8 @@ For Example : 2*6 + 2*6 Works
 </h2>
 </div>
 
-
-
 <script src= "Final.js" type = "text/javascript"></script>
+
+
+
 </html>

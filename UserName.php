@@ -3,7 +3,7 @@
 
 <html>
 <?php
-//start session and set the score of the user to 0 at the begining
+//start session and set the score of the user to 0
 session_start();
 $_SESSION['score'] =  0 ;
 
@@ -13,7 +13,7 @@ $_SESSION['score'] =  0 ;
 	<title>Example Page</title>
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<!-- added font family for 24 logo -->
+	<!-- added font family  Lobster for 24 logo -->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
   <link rel="stylesheet" type="text/css" href="Final.css">
 
@@ -33,7 +33,7 @@ $_SESSION['score'] =  0 ;
 		<h2>Name:</h2>
 		<input type="text" name="name" required />
 
-	<input type="submit" class = "btn btn-primary btn-lg"/>
+	<input type="submit" id= "start" class = "btn btn-primary btn-lg"/>
 </form>
 </div>
 </body>
