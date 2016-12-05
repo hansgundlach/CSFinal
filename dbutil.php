@@ -2,6 +2,11 @@
 
 require("config.php");
 
+
+
+
+
+function opendb(){
   try {
     //connect to database  based on config.php parameters and create new PDO object
       $db = new
@@ -13,6 +18,9 @@ require("config.php");
                    PDO::ERRMODE_EXCEPTION);
 
 
+
+return $db;
+
     }
     //server connection error  exception handling
     catch (PDOException $ex)
@@ -20,5 +28,24 @@ require("config.php");
             print ("Sorry, a database error occurred.");
             print ("(Error details: $ex->getMessage() ");
     }
+    return null;
+}
 
+    //modData takes a SQL query as inputt modifies data in my database
+    //and returns nothing
+
+    //getData takes a SQL query and returns a string fetched from database
+    function getData($query) {
+        $db = opendb();
+        $result = $db->prepare($query);
+        $result->execute();
+        $returned = $result->fetch(PDO::FETCH_ASSOC);
+        return $returned;
+      }
+
+      function modData($query) {
+        $db = opendb();
+        $result = $db->prepare($query);
+        $result->execute();
+  }
 ?>

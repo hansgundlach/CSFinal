@@ -24,6 +24,7 @@ require("config.php");
 require("dbutil.php");
 //$query selects top ten ( LIMIT 10) user by score
 $query  = "SELECT * FROM hans_users order by score DESC LIMIT 10";
+$db = opendb();
 $result = $db->prepare($query);
 $result->execute();
 
