@@ -24,8 +24,8 @@ function mainit() {
     //displays all 4 numbers on screen in html element with id Numbers
     document.getElementById("Numbers").innerHTML = fourNum.toString();
 
-
-    $("#check").unbind('click').bind('click', function() {
+      // function evaluates user entered expression when the user presses the CheckAnswer Button
+    $("#checkAnswer").unbind('click').bind('click', function() {
 
         //val is the input string entered by the user
         var val = $('#24Expres').val();
@@ -95,19 +95,18 @@ function changeScore() {
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             document.getElementById("score").innerHTML = "Youre score is " + this.responseText;
-            //set the score displayed on page to string returned by scoreChange.php
+            //set the score displayed on page to string returned by ScoreChange.php
             score = this.responseText;
-
         }
 
     }
-    xhttp.open("GET", "scoreChange.php?q=", true);
+    xhttp.open("GET", "ScoreChange.php?q=", true);
     xhttp.send();
-
 
 }
 
-//initScore takes no inputs and
+//initScore takes no inputs and makes ajax request to
+//retrieve 4 numbers to display screen
 function initScore() {
     xhttp = new XMLHttpRequest();
 
@@ -121,9 +120,8 @@ function initScore() {
         }
 
     }
-    xhttp.open("GET", "initial.php?q=", true);
+    xhttp.open("GET", "InitialNum.php?q=", true);
     xhttp.send();
-
 
 }
 
@@ -143,7 +141,7 @@ function retrieveData() {
         }
 
     }
-    xhttp.open("GET", "Final.php?q=", true);
+    xhttp.open("GET", "NextNum.php?q=", true);
     xhttp.send();
 
 }

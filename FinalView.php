@@ -57,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <input type= "text" id="24Expres" >
 
-<button type = "button" id= "check" class = "btn btn-primary btn-lg"> Check Answer </button>
+<button type = "button" id= "checkAnswer" class = "btn btn-primary btn-lg"> Check Answer </button>
 
 
 <p>

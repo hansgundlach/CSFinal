@@ -23,7 +23,7 @@ transform: scale(2,2);
 color: black;
 }
 
-#check {
+#checkAnswer {
 height:10%;
 }
 
@@ -39,8 +39,6 @@ z-index : 50;
 }
 .outerDiv {
     display: inline-flex;
-
-
 }
 
 .innerDiv {

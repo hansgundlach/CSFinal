@@ -12,5 +12,5 @@ $row = $result->fetch(PDO::FETCH_ASSOC);
 $_SESSION['numList'] =  implode(" ",$row);
 //echo send four numbers to Final.js
 echo $_SESSION['numList'];
-// implode(" ",$row);
+
 ?>
