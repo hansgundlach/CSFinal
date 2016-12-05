@@ -18,8 +18,8 @@ $(document).ready(function() {
 });
 
 
-//mainit validates user input and declares if result forms 24
-function mainit() {
+//main validates user input and declares if result forms 24
+function main() {
 
     //displays all 4 numbers on screen in html element with id Numbers
     document.getElementById("Numbers").innerHTML = fourNum.toString();
@@ -40,6 +40,7 @@ function mainit() {
 
         //replaces all alloed expressions if nums is not empty user string
         //contains not allowed characters
+        //nums reguler expression was taken from StackOverflow
         var nums = val.replace(/[\d\(\)\+\-\*\/\. ]/g, '');
 
         //expoReg detects strings containg the exponential operator **
@@ -115,7 +116,7 @@ function initScore() {
           console.log("initscore called");
             //set fourNum equal to string list of integers retrieved by init.php
             fourNum = this.responseText;
-            mainit();
+            main();
 
         }
 
@@ -136,7 +137,7 @@ function retrieveData() {
 
             fourNum = this.responseText;
             console.log(fourNum);
-            mainit();
+            main();
 
         }
 
