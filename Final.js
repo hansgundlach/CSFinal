@@ -11,7 +11,6 @@ $(document).ready(function() {
     //is fetched from the database and shownn on screen
 
     $("#next").unbind('click').bind('click', function() {
-      console.log("next pressed");
         retrieveData();
     });
 
@@ -113,7 +112,6 @@ function initScore() {
 
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-          console.log("initscore called");
             //set fourNum equal to string list of integers retrieved by init.php
             fourNum = this.responseText;
             main();
@@ -132,11 +130,9 @@ function retrieveData() {
     xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-           console.log("request made");
             //set fourNum equal to string list of integers retrieved by init.php
 
             fourNum = this.responseText;
-            console.log(fourNum);
             main();
 
         }
