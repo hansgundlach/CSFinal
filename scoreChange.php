@@ -1,5 +1,4 @@
 <?php
-require("config.php");
 require("dbutil.php");
 session_start();
 

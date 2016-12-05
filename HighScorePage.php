@@ -5,7 +5,6 @@
   <!-- added font family for 24 logo -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
   <link rel="stylesheet" type="text/css" href="Final.css">
-  <!--<script src= "Final.js" type = "text/javascript"></script>-->
 </head>
 
 
