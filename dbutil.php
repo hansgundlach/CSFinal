@@ -1,11 +1,7 @@
 <?php
 
-
-
-
 require("config.php");
 
-  //database exception handaling
   try {
     //connect to database  based on config.php parameters and create new PDO object
       $db = new
@@ -18,7 +14,7 @@ require("config.php");
 
 
     }
-    //server connection error  exception handaling
+    //server connection error  exception handling
     catch (PDOException $ex)
     {
             print ("Sorry, a database error occurred.");
