@@ -11,30 +11,23 @@
       <!-- added font family for 24 logo -->
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
       <!-- connect to js file with jquery/ajax request to interact with user input -->
-      <script src= "Final.js" type = "text/javascript"></script>
+      <script src= "Main.js" type = "text/javascript"></script>
    </head>
    <?php
+//based on code written by Dr.Bricker for example.php
       require("dbutil.php");
       if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-          //if statement checks if the users's name is already set
-          if (isset($_POST['name'])) {
-              //htmlspecialchars deals with  any character the user may have entered that
-              //could mess with the html
-              //session variable userName contains name user enterered on UserName.php
-              $cleanVar             = htmlspecialchars($_POST['name']);
-              $_SESSION['userName'] = $cleanVar;
+          //htmlspecialchars deals with  any character the user may have entered that
+          //could mess with the html
+          //session variable userName contains name user enterered in index.php
+          $cleanVar             = htmlspecialchars($_POST['name']);
+          $_SESSION['userName'] = $cleanVar;
+        }
+  //if statement checks if the users's name is already set
+            if (isset($_SESSION['userName'])) {
 
-          }
-       else {
-          //else statement for when users gets to FinalView.php without going to  UserName.php
-          //error_reporting(0) stops dispaying errors on page so
-          //I can make custom report
-          error_reporting(0);
-          echo "<h2>You are not Supposed to be on this page. Go to the <a href = 'UserName.php'> username page </a> <h2>";
-      }
-    }
-      ?>
+        ?>
    <div class = "jumbotron container-fluid ">
       <h2> Hello, <?= $_SESSION['userName'] ?></h2>
       <h2 id = "score">You're score is  <?= $_SESSION['score'] ?> </h2>
@@ -49,24 +42,37 @@
       </h2>
       </p>
       <input type= "text" id="24Expres" >
-      <button type = "button" id= "checkAnswer" class = "btn btn-primary btn-lg"> Check Answer </button>
-      <p>
-         Result : <span id = "Result"> </span>
-      </p>
-      <br>
-      <button type = "next" id= "next" class = "btn btn-primary btn-lg"> Another 24</button>
-      <br>
-      <br>
-      <div class= "well well-lg">
-         <p>
-            Try to make  24 using the four numbers above and the operations + , - , * ,and ().
-            This means no exponentials or  factorials!
+            <button type = "button" id= "checkAnswer" class = "btn btn-primary btn-lg"> Check Answer </button>
+            <p>
+               Result : <span id = "Result"> </span>
+            </p>
             <br>
-            For Example : 2*6 + 2*6 Works and 3*(2^3)*1 Doesn't work
+            <button type = "next" id= "next" class = "btn btn-primary btn-lg"> Another 24</button>
             <br>
-            Check out the <a href= "HighScorePage.php">High Score Page</a>
-         </p>
-      </div>
-   </div>
-   <script src= "Final.js" type = "text/javascript"></script>
+            <br>
+            <div class= "well well-lg">
+               <p>
+                  Try to make  24 using the four numbers above and the operations + , - , * ,and ().
+                  This means no exponentials or  factorials!
+                  <br>
+                  For Example : 2*6 + 2*6 Works and 3*(2^3)*1 Doesn't work
+                  <br>
+                  Check out the <a href= "HighScorePage.php">High Score Page</a>
+               </p>
+            </div>
+         </div>
+         <script src= "Final.js" type = "text/javascript"></script>
+  <?php
+
+}else{
+    //else statement for when users gets to FinalView.php without going to index.php
+    echo "<h2>You are not Supposed to be on this page. Go to the <a href = 'index.php'> username page </a> <h2>";
+  }
+
+  ?>
+
+
+
+
+
 </html>

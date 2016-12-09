@@ -12,25 +12,19 @@
  <div class= "text-center">
 <div class ="jumbotron">
   <p>
-   <h1>High Score Users</h1>
+   <h1>Top Ten Users</h1>
 </p>
 </div>
 <br>
 <table class = "table text-center">
 
 <?php
-
-require("config.php");
 require("dbutil.php");
 //$query selects top ten ( LIMIT 10) user by score
-$query  = "SELECT * FROM hans_users order by score DESC LIMIT 10";
-$db = opendb();
-$result = $db->prepare($query);
-$result->execute();
 
+$result = modData("SELECT * FROM hans_users order by score DESC LIMIT 10");
 //while loops goes through every row in high score user database
-//and displays table rows produced by $query
-while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+while ($row = $result -> fetch(PDO::FETCH_ASSOC)) {
     echo "<tr>";
     //$user ,$score are the username and userscore respectivly from database of high scorers
     $user  = $row['user'];

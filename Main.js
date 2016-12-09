@@ -5,13 +5,13 @@ var score;
 
 $(document).ready(function() {
     //initalizes four unumbers will make 24 out of
-   initScore();
+   initNums();
 
     //when user presses the button with id "next" a new set of four numbers
     //is fetched from the database and shownn on screen
 
     $("#next").unbind('click').bind('click', function() {
-        retrieveData();
+        updateNums();
     });
 
 });
@@ -50,9 +50,9 @@ function main() {
         dubDigit = new RegExp("[0-9]{2,}");
         var dub = dubDigit.test(val);
 
-
+        // if user inputs any characters that are not digits or the operators + , - , * , \
         if (nums !== "" || expo) {
-          // if user inputs any characters that are not digits or the operators + , - , * , \
+
             $("#Result").text("please use only the characters allowed:");
         } else {
             //check if user input contaisn alll 4 digits and only contains those digits
@@ -65,13 +65,10 @@ function main() {
                 if (eval(val) === 24) {
 
                     $("#Result").text("Congratulations ! You GOT THE LAST 24");
-                    document.getElementById("24Expres").value = "";
-
                     changeScore();
-                    val = "";
+                    //retrieveData sets up new 24 if user answers previous 24 correctly
                     retrieveData();
 
-                    return;
 
                 } else {
                     //user expression is syntactilcy correct and meets rules but does not
@@ -111,9 +108,9 @@ function changeScore() {
 
 }
 
-//initScore takes no inputs and makes ajax request to
+//initNums() takes no inputs and makes ajax request to
 //retrieve 4 numbers to display screen
-function initScore() {
+function initNums() {
     xhttp = new XMLHttpRequest();
 
     xhttp.onreadystatechange = function() {
@@ -130,9 +127,9 @@ function initScore() {
 
 }
 
-//retrieveData takes no argumnets and sends ajax request to server for
+//updateNums takes no argumnets and sends ajax request to server for
 //string of 4 numbers For Example "4,3,4,3"
-function retrieveData() {
+function updateNums() {
     xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {

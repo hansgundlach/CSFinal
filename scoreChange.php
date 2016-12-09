@@ -20,17 +20,19 @@ $row = (int) $row;
 //10th higest scoring user in table ($row) then add user to higscore table
 if ($pageScore > $row) {
     //$usercheck looks in the database hans_users to see if $pageUser is present
-    $db = opendb();
+  //  $db = opendb();
     $userCheck = "SELECT * FROM hans_users WHERE user = '$pageUser'";
-    $check     = $db->prepare($userCheck);
-    $check->execute();
+  //  $check     = $db->prepare($userCheck);
+  //  $check->execute();
+     $check = modData($userCheck);
 
-    //check if user is already in database
+
+    //check if user is galready in database
     if ($check->rowCount() > 0) {
-      //  $checkResult = $check->fetch(PDO::FETCH_ASSOC);
         //change user entry if user score if user is already in highscore
 
-        // sameUserScore retrieve score of user with same username
+        // sameUserScore retrieve score of user with same username and saves
+        // the result in a vaiable of the same name
         $sameUserquery  = "SELECT score FROM hans_users WHERE user = '$pageUser'";
         $sameUserScore = getData($sameUserquery);
         $sameUserScore     = (int) $sameUserScore;
@@ -40,9 +42,6 @@ if ($pageScore > $row) {
           //$update changes score for current pageUSer if pageUser is already in the high score table
             $update = "UPDATE hans_users SET score ='$pageScore' WHERE user = '$pageUser'";
             modData($update);
-        //    $update = $db->prepare($update);
-        //    $update->execute();
-
         }
 
     } else {
