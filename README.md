@@ -28,4 +28,5 @@ name enter the scoreboard only the user with the highest score will be displayed
 
 #Notes to Dr.Bricker
 The Ajax statements may not seem DRY in Main.js. However , each ajax request does suddenly different functions.
+InitialNum and NextNum are very similiar but can not be put together as we discussed.
 Ask me any questions if things seem repetitive.

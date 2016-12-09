@@ -3,9 +3,9 @@
 
 require("config.php");
 
-//method opens up database and returns data base variable if sucessful
+//method opens up database and returns database variable if sucessful
 //otherwise method returns null
-function opendb()
+function openDB()
 {
     try {
         //connect to database  based on config.php parameters and create new PDO object
@@ -30,27 +30,24 @@ function opendb()
 }
 
 
-//getData takes a SQL query as a string and returns a string fetched from database
-//using inputed SQL query
-function getData($query)
-{
-    $db     = opendb();
-    //prepare query using PDO to prevent SQL injections
-    //$result is result rreturned by query to database
-    $result = $db->prepare($query);
-    $result->execute();
-    $result = $result->fetch(PDO::FETCH_ASSOC);
-    return $result;
-}
-
-
 //modData takes a SQL query as input modifies data in my database
 //and returns the result of the query
 function modData($query)
 {
-    $db     = opendb();
+    $db     = openDB();
     $result = $db->prepare($query);
     $result->execute();
     return $result;
 }
+
+
+//getData takes a SQL query as a string and returns a string fetched from database
+//using inputed SQL query
+function getData($query)
+{
+    $result = modData($query);
+    $result = $result->fetch(PDO::FETCH_ASSOC);
+    return $result;
+}
+
 ?>

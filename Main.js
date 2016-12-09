@@ -4,12 +4,11 @@ var fourNum;
 var score;
 
 $(document).ready(function() {
-    //initalizes four unumbers will make 24 out of
-   initNums();
+    //initalizes four numbers that the player will make  24 out of
+    initNums();
 
     //when user presses the button with id "next" a new set of four numbers
-    //is fetched from the database and shownn on screen
-
+    //is fetched from the database and shown on screen
     $("#next").unbind('click').bind('click', function() {
         updateNums();
     });
@@ -23,26 +22,25 @@ function main() {
     //displays all 4 numbers on screen in html element with id Numbers
     document.getElementById("Numbers").innerHTML = fourNum.toString();
 
-      // function evaluates user entered expression when the user presses the CheckAnswer Button
+    // function evaluates user entered expression when the user presses the CheckAnswer Button
     $("#checkAnswer").unbind('click').bind('click', function() {
-        console.log("console loging");
         //val is the input string entered by the user
         var val = $('#24Expres').val();
 
         //onlyDig is a string where everything but digits are replaced
         var onlyDig = val.replace(/[^0-9]/g, "");
 
-        //if onlyDig length is bigger htne 4 something is wrong
+        //if onlyDig length is not 4 the user entered to many or too few numbers
         var regex = new RegExp("[" + fourNum.toString() + "]" + "{4}");
         //regex checks if input maches all 4 characters
         var rules = regex.test(onlyDig);
 
-        //replaces all alloed expressions if nums is not empty user string
+        // .replace() below replaces all allowed expressions. if nums is not empty user string
         //contains not allowed characters
         //nums reguler expression was taken from StackOverflow
         var nums = val.replace(/[\d\(\)\+\-\*\/\. ]/g, '');
 
-        //expoReg detects strings containg the exponential operator **
+        //expoReg detects strings containg the exponential operator (**)
         expoReg = new RegExp("[*]{2}");
         var expo = expoReg.test(val);
 
@@ -50,35 +48,36 @@ function main() {
         dubDigit = new RegExp("[0-9]{2,}");
         var dub = dubDigit.test(val);
 
-        // if user inputs any characters that are not digits or the operators + , - , * , \
+        // if user inputs contains any characters that are not digits or the operators + , - , * , \
         if (nums !== "" || expo) {
 
             $("#Result").text("please use only the characters allowed:");
         } else {
-            //check if user input contaisn alll 4 digits and only contains those digits
+            //check if user input contains alll 4 digits and only contains those digits
             //if onlyDig length is not equal to 4 there are not 4 digits in thr users expression
             if (rules && (onlyDig.length === 4) && !dub)
 
             {
-              //if statements evaluates expression enteres by user using eval
-              // and displays congratulation if expression evaluates to 24
+                //if statements below evaluates expression entered by user using eval
+                // and displays congratulation if expression evaluates to 24
                 if (eval(val) === 24) {
 
                     $("#Result").text("Congratulations ! You GOT THE LAST 24");
+                    //add 1 to user score
                     changeScore();
                     //retrieveData sets up new 24 if user answers previous 24 correctly
                     retrieveData();
 
 
                 } else {
-                    //user expression is syntactilcy correct and meets rules but does not
+                    //user expression is syntactilcy correct and meets 24 rules but does not
                     //evaluate to 24
                     $("#Result").text("Look at this again, Your Answer Evaluated To " + eval(val));
                 }
 
             } else {
-              //display message when user enters more numnbers then are allowed or enters
-              //numbers that are not allowed
+                //display message when user enters more numnbers then are allowed or enters
+                //numbers that are not allowed
                 $("#Result").text("make sure you only use all and only the numbers above");
                 return;
 
