@@ -20,7 +20,7 @@
 
 <?php
 require("dbutil.php");
-//$query selects top ten ( LIMIT 10) user by score
+//$reault top ten ( LIMIT 10) user by score
 // hans_users is a data table of high scoring users with two columns name and score
 //LIMIT 10 to only show top ten highest scoring users
 $result = modData("SELECT * FROM hans_users order by score DESC LIMIT 10");

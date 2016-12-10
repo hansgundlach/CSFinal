@@ -1,6 +1,6 @@
-//fourNum contains list of 4 numbers that player will use to form 24
+//fourNum contains list of 4 single digit positive integer numbers that the player will use to form 24
 var fourNum;
-//score is user score for game
+//score is user score for the game
 var score;
 
 $(document).ready(function() {
@@ -28,12 +28,13 @@ function main() {
         var val = $('#24Expres').val();
 
         //onlyDig is a string where everything but digits are replaced
+        //if onlyDig length is not 4 the user entered to many or too few numbers
         var onlyDig = val.replace(/[^0-9]/g, "");
 
-        //if onlyDig length is not 4 the user entered to many or too few numbers
         var regex = new RegExp("[" + fourNum.toString() + "]" + "{4}");
-        //regex checks if input maches all 4 characters
-        var rules = regex.test(onlyDig);
+        //regex checks if input maches all 4 characters ie all four digits are used and no others
+        // dig is false if users uses forbbiden digitsor doesn't match all digits
+        var dig = regex.test(onlyDig);
 
         // .replace() below replaces all allowed expressions. if nums is not empty user string
         //contains not allowed characters
@@ -41,6 +42,7 @@ function main() {
         var nums = val.replace(/[\d\(\)\+\-\*\/\. ]/g, '');
 
         //expoReg detects strings containg the exponential operator (**)
+        //expo is false if there are no ** symbols
         expoReg = new RegExp("[*]{2}");
         var expo = expoReg.test(val);
 
@@ -48,25 +50,25 @@ function main() {
         dubDigit = new RegExp("[0-9]{2,}");
         var dub = dubDigit.test(val);
 
-        // if user inputs contains any characters that are not digits or the operators + , - , * , \
+        // if statemnet check if suser inputs contains any characters that are not digits or the operators + , - , * , \
         if (nums !== "" || expo) {
 
             $("#Result").text("please use only the characters allowed:");
         } else {
             //check if user input contains alll 4 digits and only contains those digits
             //if onlyDig length is not equal to 4 there are not 4 digits in thr users expression
-            if (rules && (onlyDig.length === 4) && !dub)
+            if (dig && (onlyDig.length === 4) && !dub)
 
             {
                 //if statements below evaluates expression entered by user using eval
                 // and displays congratulation if expression evaluates to 24
                 if (eval(val) === 24) {
 
-                    $("#Result").text("Congratulations ! You GOT THE LAST 24");
-                    //add 1 to user score
+                    $("#Result").text("Congratulations ! You GOT THE PREVIOUS 24");
+                    //chnangsCore adds 1 to user score
                     changeScore();
-                    //retrieveData sets up new 24 if user answers previous 24 correctly
-                    retrieveData();
+                    //updateNums() sets up new 24 if user answers previous 24 correctly
+                    updateNums();
 
 
                 } else {

@@ -10,7 +10,7 @@
       <title>Example Page</title>
       <!-- Latest compiled and minified CSS -->
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-      <!-- added font family  Lobster for 24 logo -->
+      <!-- added font family Lobster for 24 logo -->
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
       <link rel="stylesheet" type="text/css" href="Final.css">
    </head>
@@ -29,10 +29,10 @@
          <br>
          <div class= "well well-lg">
             <p>
-               24 is a number game where you try to make 24 using four numbers and the operations + , - , * ,and ().
-               This means no exponentials or  factorials!
+               24 is a number game where you try to make 24 using four single digit numbers and the operations + , - , * ,and ().
+               This means no exponentials,decimals,or factorials!
                <br>
-               For Example : 2*6 + 2*6 Works and 3*(2^3)*1 Doesn't work
+               For Example : 2*6 + 2*6 Works and 3*(2^3)*1.0 Doesn't work
                <br>
             </p>
          </div>

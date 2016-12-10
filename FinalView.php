@@ -10,7 +10,7 @@
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
       <!-- added Lobster font family for 24 logo -->
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
-      <!-- connect to js file with jquery/ajax request to interact with user input -->
+      <!-- scripts connects to js file with jquery/ajax request to interact with user input -->
       <script src= "Main.js" type = "text/javascript"></script>
    </head>
    <?php
@@ -51,16 +51,14 @@
       <br>
       <div class= "well well-lg">
          <p>
-            Try to make  24 using the four numbers above and the operations + , - , * ,and ().
-            This means no exponentials or  factorials!
-            <br>
-            For Example : 2*6 + 2*6 Works and 3*(2^3)*1 Doesn't work
-            <br>
+           24 is a number game where you try to make 24 using four single digit numbers and the operations + , - , * ,and ().
+           This means no exponentials,decimals,or factorials! For Example : 2*6 + 2*6 Works and 3*(2^3)*1.0 Doesn't work
+           <br>
             Check out the <a href= "HighScorePage.php">High Score Page</a>
          </p>
       </div>
    </div>
-   <script src= "Final.js" type = "text/javascript"></script>
+   <script src= "Main.js" type = "text/javascript"></script>
    <?php
       }else{
           //else statement when users gets to FinalView.php without going to index.php

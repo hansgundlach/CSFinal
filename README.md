@@ -7,26 +7,27 @@ If the player wants another problem, my game will display another set of numbers
 
 
 #Project Overview
-24 works in two stages. First a user enters in their name on UserName.php. The
-user's name is then saved as a session variable and they are directed to FinalView.php
-FinalView.php contains a user input box and two buttons "checkAnswer" and "Another 24".
+24 works in two stages. First a user enters in their name in index.php. The
+user's name is then saved as a session variable and they are directed to FinalView.php ,which contains the game.
+FinalView.php has  a user input box and two buttons "checkAnswer" and "Another 24".
 when "Another 24"  is clicked an ajax request is sent using Main.js and NextNum.php to a database
-of numbers that can form 24. When "checkAnswer" is clicked Main.js checks the user’s inputs and
+of numbers that can form 24 (hans_24list). When "checkAnswer" is clicked, Main.js checks the user’s inputs and
 sends an ajax request to the server to update the userscore if the answer is correct using ScoreChange.php.
+All of the project css is in Final css and the bootstrap library.
+
+
+#Limitations
+The program uses only temporary session cookie to store the user name and information.
+This can lead to problems if multiple user enter the same username. If multiple users with the same
+name enter the scoreboard only the user with the higher score will be displayed. Also users on smaller screen sizes may not be
+able to view instructions.
 
 #Credits
 I used the Bootstrap library for most of my CSS.
 Look in files for any StackOverflow credits. Session variable and login are based
 loosely on examples given by Dr.Bricker.
 
-
-#Limitations
-The program uses only temporary session cookie to store the user name and information.
-This can lead to problems if multiple user enter the same username. If multiple users with the same
-name enter the scoreboard only the user with the highest score will be displayed.
-
-
 #Notes to Dr.Bricker
 The Ajax statements may not seem DRY in Main.js. However , each ajax request does suddenly different functions.
-InitialNum and NextNum are very similiar but can not be put together as we discussed.
+InitialNum.php and NextNum.php are very similiar but can not be put together as we discussed.
 Ask me any questions if things seem repetitive.

@@ -1,4 +1,3 @@
-/*chnage input box border when user hovers */
 
 input[type=text]:focus {
     border: 3px solid #555;

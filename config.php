@@ -1,5 +1,5 @@
 <?php
-//Second Table Server settings
+//Local  Server settings
 $GLOBALS["hostname"] = "localhost";
 $GLOBALS["username"] = "root";
 $GLOBALS["password"] = "";

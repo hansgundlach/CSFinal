@@ -3,9 +3,11 @@ session_start();
 require ("dbutil.php");
 
 // isset () check if 4 numbers are already generated and
-// statement set 4 numbers if they are not set
+
 if (!isset($_SESSION['numList']))
 	{
+  // set 4 numbers if they are not set
+
 	//getData query select  1 (LIMIT 1) random row of datatable
 	//hans_24list is a datatable containign a string with four numbers
 	$row   =  getData("SELECT numSet FROM hans_24list order by rand() LIMIT 1");
