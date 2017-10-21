@@ -4,6 +4,7 @@ var fourNum;
 var score;
 
 $(document).ready(function() {
+    
     //initalizes four numbers that the player will make  24 out of
     initNums();
 
@@ -122,9 +123,11 @@ function initNums() {
 
         }
 
+console.log("initiating nums");
     }
     xhttp.open("GET", "InitialNum.php?q=", true);
     xhttp.send();
+
 
 }
 
@@ -137,10 +140,12 @@ function updateNums() {
             //set fourNum equal to string list of integers retrieved by init.php
 
             fourNum = this.responseText;
+            console.log(fourNum);
             main();
 
         }
 
+console.log("changing nums");
     }
     xhttp.open("GET", "NextNum.php?q=", true);
     xhttp.send();

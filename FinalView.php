@@ -31,7 +31,7 @@
       <h2> Hello, <?= $_SESSION['userName'] ?></h2>
       <h2 id = "score">You're score is  <?= $_SESSION['score'] ?> </h2>
       <div class="text-center">
-         <h1 class ="Main24">24</h1>
+         <h1 class ="Main24">24 Beta</h1>
       </div>
    </div>
    <div class = "text-center">
